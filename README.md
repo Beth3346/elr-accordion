@@ -42,3 +42,7 @@ A jQuery component for creating accordion content
                 expedita!
             </div>
         </div>
+
+###License
+
+DRM-Accordion is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)

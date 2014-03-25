@@ -1,50 +1,49 @@
 ###############################################################################
 # Toggles hiding and showing content with an accordion efffect
 ###############################################################################
+"use strict"
 
 ( ($) ->
+    class window.DrmAccordion
+        constructor: (@speed = 300, @state = 'collapsed', @container = $('.drm-accordion'), @buttons = yes) ->
+            @label = ".#{@container.children().first().attr 'class'}"
+            @contentHolder = ".#{$(@label).next().attr 'class'}"
+            @content = @container.find @contentHolder
+            self = @
 
-	drmAccordion = {
-		container: $ '.drm-accordion'
-		content: $ '.drm-accordion-inner'		
+            if @buttons
+                @showButton = @addButton 'showButton', 'Show All', 'drm-show-all drm-button-inline'
+                @hideButton = @addButton 'hideButton', 'Hide All', 'drm-hide-all drm-button-inline'
 
-		config: {
-			speed: 200,
-			state: $('.drm-accordion').data 'state'
-		}
+                @showButton.on 'click', @showAll
+                @hideButton.on 'click', @hideAll
 
-		init: (config) ->
-			$.extend @.config, config
-			# if no defaultState value is supplied, hide content
-			if drmAccordion.config.state == 'expanded' then @.content.show() else @.content.hide()
+            if @state is 'expanded' then @content.show() else @content.hide()
 
-			$('<button></button>', {
-				text: 'Show All',
-				class: 'drm-show-all drm-button-inline'
-			}).prependTo(@.container).on 'click', @.showAll
+            toggleContent = ->
+                
 
-			$('<button></button>', {
-				text: 'Hide All',
-				class: 'drm-hide-all drm-button-inline'
-			}).prependTo(@.container).on 'click', @.hideAll
+            @container.on 'click', @label, -> self.toggle.call @, self.speed, self.contentHolder
 
-			@.container.on 'click', '.drm-accordion-label', @.toggle
+        addButton: (button, message, className) ->
+            button = $ '<button></button>',
+                text: message
+                class: className
 
-		toggle: ->
-			content = $(@).next()
-			speed = drmAccordion.config.speed
-			if ( content.is(':hidden') )
-				content.slideDown(speed).siblings('.drm-accordion-inner').slideUp speed
-			else
-				content.slideUp speed
+            button.prependTo @container
 
-		showAll: ->		
-			drmAccordion.content.slideDown drmAccordion.config.speed
+            button
 
-		hideAll: ->
-			drmAccordion.content.slideUp drmAccordion.config.speed
-	}
+        toggle: (speed, content) ->
+            nextContent = $(@).next()
+            if nextContent.is(':hidden') then nextContent.slideDown(speed).siblings(content).slideUp speed else nextContent.slideUp speed
 
-	drmAccordion.init()
-		
-) jQuery							
+        showAll: =>
+            @content.slideDown @speed
+
+        hideAll: =>
+            @content.slideUp @speed
+    
+    new DrmAccordion()
+
+) jQuery
