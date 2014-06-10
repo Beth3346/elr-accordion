@@ -3,6 +3,9 @@
 
 /.editorconfig
 /.gitattributes
+/.gitignore
+/.sublime-project
+/.sublime-workspace
 /.jscs.json
 /.mailmap
 /.travis.yml
@@ -11,3 +14,4 @@
 /speed
 /test
 /Gruntfile.js
+/src
