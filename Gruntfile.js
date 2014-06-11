@@ -38,27 +38,27 @@ module.exports = function(grunt) {
                 flatten: true,
                 cwd: '<%= appFolder %>',
                 src: ['**/*.coffee'],
-                dest: '<%= distFolder %>coffee-compiled',
+                dest: '<%= distFolder %>',
                 ext: '.js'
             }  
         },
 
-        concat: {
-            options: {
-                    // define a string to put between each file in the concatenated output
-                separator: ';'
-            },
+        // concat: {
+        //     options: {
+        //             // define a string to put between each file in the concatenated output
+        //         separator: ';'
+        //     },
 
-            dist: {
-                // the files to concatenate
-                src: ['<%= distFolder %>assets/*.js','<%= distFolder %>coffee-compiled/*.js'],
-                // the location of the resulting JS file
-                dest: '<%= distFolder %><%= pkg.name %>.<%= pkg.version %>.js'
-            }
-        },
+        //     dist: {
+        //         // the files to concatenate
+        //         src: ['<%= distFolder %>assets/*.js','<%= distFolder %>coffee-compiled/*.js'],
+        //         // the location of the resulting JS file
+        //         dest: '<%= distFolder %><%= pkg.name %>.js'
+        //     }
+        // },
 
         jshint: {
-            files: ['<%= distFolder %>coffee-compiled/*.js'],
+            files: ['<%= distFolder %>*.js'],
             options: {
                 maxerr: 10,
                 // unused: true,
@@ -75,7 +75,7 @@ module.exports = function(grunt) {
                 },
 
                 files: {
-                    '<%= distFolder %><%= pkg.name %>.<%= pkg.version %>.js': ['<%= distFolder %><%= pkg.name %>.<%= pkg.version %>.js']
+                    '<%= distFolder %><%= pkg.name %>.js': ['<%= distFolder %><%= pkg.name %>.js']
                 }
             }
         },
@@ -84,13 +84,18 @@ module.exports = function(grunt) {
 
             scripts: {
                 // We watch and compile sass files as normal but don't live reload here
-                files: ['<%= appFolder %>assets/**/*.js', '<%= appFolder %>coffee/**/*.coffee'],
-                tasks: [ 'coffee', 'concat', 'jshint' ],
+                files: ['<%= appFolder %>**/*.js', '<%= appFolder %>**/*.coffee'],
+                tasks: [ 'coffee', 'jshint' ],
             },
 
             copy: {
                 files: [ '<%= appFolder %>**/*', '!<%= appFolder %>**/*.coffee' ],
                 tasks: [ 'copy' ]
+            },
+
+            clean: {
+                files: [ '<%= appFolder %>**/*', '!<%= appFolder %>**/*.coffee' ],
+                tasks: [ 'clean:postbuild' ]
             },
 
             livereload: {
@@ -112,7 +117,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
 
     // Default task(s).
-    grunt.registerTask('default', ['clean:build', 'copy', 'coffee', 'concat', 'jshint']);
-    grunt.registerTask('build', ['clean:build', 'copy', 'coffee', 'concat', 'uglify', 'clean:postbuild'])
+    grunt.registerTask('default', ['clean:build', 'copy', 'coffee', 'jshint', 'clean:postbuild', 'watch']);
+    grunt.registerTask('build', ['clean:build', 'copy', 'coffee', 'jshint', 'clean:postbuild'])
 
 };

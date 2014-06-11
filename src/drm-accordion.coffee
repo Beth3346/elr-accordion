@@ -1,7 +1,6 @@
 ###############################################################################
 # Toggles hiding and showing content with an accordion efffect
 ###############################################################################
-$ = require 'jquery'
 
 ( ($) ->
     class window.DrmAccordion
