@@ -1,6 +1,6 @@
 {
     "name": "drm-accordion",
-    "version": "0.0.1",
+    "version": "0.0.3",
     "description": "accordion content",
     "main": "dist/drm-accordion.js",
     "scripts": {
@@ -8,6 +8,7 @@
     },
     "keywords": [
         "jquery",
+        "javascript",
         "ux",
         "accordion"
     ],
@@ -21,9 +22,6 @@
     "repository": {
         "type": "git",
         "url": "https://github.com/dynamicresponsemedia/drm-accordion.git"
-    },
-    "dependencies": {
-        "jquery": "2.1.1"
     },
     "devDependencies": {
         "coffee-script": "1.7.1",
