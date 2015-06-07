@@ -19,20 +19,20 @@ Requires jQuery
 
 + defaults to collapsed so this data-state isn't really needed
 
-        <div class=".drm-accordion-inner" data-state="collapsed">
-        <div class=".drm-accordion-inner" data-state="expanded">
+        <div class=".elr-accordion-inner" data-state="collapsed">
+        <div class=".elr-accordion-inner" data-state="expanded">
 
 #### Optional config options for speed, container, buttons, and icons
         
-        myAccordion = drmAccordion({});
+        myAccordion = elrAccordion({});
 
 ### Example Usage:
 
 #### Sample html
 
-        <div class="drm-accordion">
-            <div class="drm-accordion-label">Item One</div>
-            <div class="drm-accordion-inner" data-state="expanded">
+        <div class="elr-accordion">
+            <div class="elr-accordion-label">Item One</div>
+            <div class="elr-accordion-inner" data-state="expanded">
                 Lorem ipsum dolor sit amet,
                 consectetur adipisicing elit. Nostrum, dolorum esse tenetureius 
                 consectetur modi ad et quod ab eaque! Cupiditate, voluptates, 
@@ -43,8 +43,8 @@ Requires jQuery
                 distinctio natus aperiam ratione optio ullam magnam illo amet 
                 expedita!
             </div>
-            <div class="drm-accordion-label">Item Two</div>
-            <div class="drm-accordion-inner">Lorem ipsum dolor sit amet, 
+            <div class="elr-accordion-label">Item Two</div>
+            <div class="elr-accordion-inner">Lorem ipsum dolor sit amet, 
                 consectetur adipisicing elit. Nostrum, dolorum esse tenetureius 
                 consectetur modi ad et quod ab eaque! Cupiditate, voluptates, 
                 sunt, modi, repellendus nemo saepe illum delectus aut ex corporis 
@@ -67,21 +67,21 @@ Requires jQuery
 
 + defaults to collapsed so this data-state isn't really needed
 
-        <div class=".drm-accordion-nav-inner" data-state="collapsed">
-        <div class=".drm-accordion-nav-inner" data-state="expanded">
+        <div class="elr-accordion-nav-inner" data-state="collapsed">
+        <div class="elr-accordion-nav-inner" data-state="expanded">
 
 #### Optional config options for speed, container, and icons
 
-        myNav = drmAccordionNav({});
+        myNav = elrAccordionNav();
 
 ### Example Usage:
 
 #### Sample html
 
-        <nav class="drm-accordion-nav">
+        <nav class="elr-accordion-nav">
             <ul>
-                <li class="drm-accordion-nav-label"><a href="#">Bears</a>
-                    <ul class="drm-accordion-nav-inner" data-state="expanded">
+                <li class="elr-accordion-nav-label"><a href="#">Bears</a>
+                    <ul class="elr-accordion-nav-inner" data-state="expanded">
                         <li><a href="#">Grizzly</a></li>
                         <li><a href="#">Polar</a></li>
                         <li><a href="#">Giant Panda</a></li>
@@ -89,8 +89,8 @@ Requires jQuery
                         <li><a href="#">Brown Bear</a></li>
                     </ul>
                 </li>
-                <li class="drm-accordion-nav-label"><a href="#">Dogs</a>
-                    <ul class="drm-accordion-nav-inner">
+                <li class="elr-accordion-nav-label"><a href="#">Dogs</a>
+                    <ul class="elr-accordion-nav-inner">
                         <li><a href="#">Doberman</a></li>
                         <li><a href="#">Shetland Sheepdog</a></li>
                         <li><a href="#">Siberian Husky</a></li>
@@ -103,4 +103,4 @@ Requires jQuery
 
 ###License
 
-DRM-Accordion is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+ELR-Accordion is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
