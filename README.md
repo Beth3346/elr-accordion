@@ -1,11 +1,11 @@
-# DRM Accordion
+# ELR Accordion
 
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
 A jQuery component for creating accordions
 Requires jQuery
 
-## Accordion Content
+## ELR Accordion Content
 
 ### Features:
 
@@ -24,7 +24,7 @@ Requires jQuery
 
 #### Optional config options for speed, container, buttons, and icons
         
-        myAccordion = elrAccordion({});
+        myAccordion = elrAccordion();
 
 ### Example Usage:
 
@@ -57,7 +57,7 @@ Requires jQuery
         </div>
 
 
-## Accordion Navigation
+## ELR Accordion Navigation
 
 ### Features:
 

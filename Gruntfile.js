@@ -6,29 +6,10 @@ module.exports = function(grunt) {
         appFolder: 'src/',
         distFolder: 'dist/',
 
-        copy: {
-            build: {
-                cwd: '<%= appFolder %>',
-                src: [ '**', '!**/partials/**/*' ],
-                dest: '<%= distFolder %>',
-                expand: true
-            }
-        }, 
-
         clean: {
             build: {
                 nonull: false,
                 src: ['<%= distFolder %>']
-            },
-
-            scripts: {
-                nonull: false,
-                src: ['<%= distFolder %>js']        
-            },
-
-            postbuild: {
-                nonull: false,
-                src: ['<%= distFolder %>assets']
             }
         },
 
@@ -40,14 +21,14 @@ module.exports = function(grunt) {
 
             dist: {
                 // the files to concatenate
-                src: ['<%= distFolder %>assets/*.js'],
+                src: ['<%= appFolder %>*.js'],
                 // the location of the resulting JS file
                 dest: '<%= distFolder %><%= pkg.name %>.js'
             }
         },
 
         jshint: {
-            files: ['<%= distFolder %>*.js'],
+            files: ['<%= appFolder %>*.js'],
             options: {
                 maxerr: 10,
                 // unused: true,
@@ -75,9 +56,8 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-contrib-jshint');
-    grunt.loadNpmTasks('grunt-contrib-copy');
 
     // Default task(s).
-    grunt.registerTask('default', ['clean:build', 'copy', 'jshint', 'uglify', 'clean:postbuild'])
+    grunt.registerTask('default', ['clean:build', 'jshint', 'concat', 'uglify'])
 
 };
