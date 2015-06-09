@@ -6,7 +6,7 @@
     "Elizabeth Rogers <beth@elizabeth-rogers.com>"
   ],
   "description": "javascript accordion ui componenet",
-  "main": "\"dist/elr-accordion.js",
+  "main": "dist/elr-accordion.js",
   "moduleType": [
     "globals"
   ],
@@ -23,7 +23,8 @@
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    "src"
   ],
   "dependencies": {
     "jquery": "~2.1.4"
