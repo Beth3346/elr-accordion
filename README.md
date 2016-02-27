@@ -19,11 +19,11 @@ Requires jQuery
 
 + defaults to collapsed so this data-state isn't really needed
 
-        <div class=".elr-accordion-inner" data-state="collapsed">
-        <div class=".elr-accordion-inner" data-state="expanded">
+        <div class="elr-accordion-inner" data-state="collapsed">
+        <div class="elr-accordion-inner" data-state="expanded">
 
 #### Optional config options for speed, container, buttons, and icons
-        
+
         myAccordion = elrAccordion();
 
 ### Example Usage:
@@ -34,24 +34,24 @@ Requires jQuery
             <div class="elr-accordion-label">Item One</div>
             <div class="elr-accordion-inner" data-state="expanded">
                 Lorem ipsum dolor sit amet,
-                consectetur adipisicing elit. Nostrum, dolorum esse tenetureius 
-                consectetur modi ad et quod ab eaque! Cupiditate, voluptates, 
-                sunt, modi, repellendus nemo saepe illum delectus aut ex corporis 
-                at deserunt id repellat quaerat ratione sed ipsam provident quod 
-                magnam quidem molestiae a aliquam in debitis ullam excepturi dicta 
-                inventore laudantium officiis? Saepe, perspiciatis, illum neque 
-                distinctio natus aperiam ratione optio ullam magnam illo amet 
+                consectetur adipisicing elit. Nostrum, dolorum esse tenetureius
+                consectetur modi ad et quod ab eaque! Cupiditate, voluptates,
+                sunt, modi, repellendus nemo saepe illum delectus aut ex corporis
+                at deserunt id repellat quaerat ratione sed ipsam provident quod
+                magnam quidem molestiae a aliquam in debitis ullam excepturi dicta
+                inventore laudantium officiis? Saepe, perspiciatis, illum neque
+                distinctio natus aperiam ratione optio ullam magnam illo amet
                 expedita!
             </div>
             <div class="elr-accordion-label">Item Two</div>
-            <div class="elr-accordion-inner">Lorem ipsum dolor sit amet, 
-                consectetur adipisicing elit. Nostrum, dolorum esse tenetureius 
-                consectetur modi ad et quod ab eaque! Cupiditate, voluptates, 
-                sunt, modi, repellendus nemo saepe illum delectus aut ex corporis 
-                at deserunt id repellat quaerat ratione sed ipsam provident quod 
-                magnam quidem molestiae a aliquam in debitis ullam excepturi dicta 
-                inventore laudantium officiis? Saepe, perspiciatis, illum neque 
-                distinctio natus aperiam ratione optio ullam magnam illo amet 
+            <div class="elr-accordion-inner">Lorem ipsum dolor sit amet,
+                consectetur adipisicing elit. Nostrum, dolorum esse tenetureius
+                consectetur modi ad et quod ab eaque! Cupiditate, voluptates,
+                sunt, modi, repellendus nemo saepe illum delectus aut ex corporis
+                at deserunt id repellat quaerat ratione sed ipsam provident quod
+                magnam quidem molestiae a aliquam in debitis ullam excepturi dicta
+                inventore laudantium officiis? Saepe, perspiciatis, illum neque
+                distinctio natus aperiam ratione optio ullam magnam illo amet
                 expedita!
             </div>
         </div>
