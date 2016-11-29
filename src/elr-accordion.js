@@ -1,5 +1,3 @@
-// import elrUtils from './elr-utilities';
-
 const $ = require('jquery');
 
 import elrUtilities from 'elr-utility-lib';
