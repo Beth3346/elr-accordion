@@ -1,52 +1,47 @@
+import elrUtils from './elr-utilities';
+
 const $ = require('jquery');
+let elr = elrUtils();
 
-const elrAccordion = function(params) {
-    const self = {};
-    const spec = params || {};
-    const containerClass = spec.containerClass || 'elr-accordion';
-    const labelClass = spec.labelClass || 'elr-accordion-label';
-    const contentHolderClass = spec.contentHolderClass || 'elr-accordion-inner';
-    const showButtons = (typeof spec.showButtons === 'undefined') ? true : spec.showButtons;
-    const speed = spec.speed || 300;
-    const expandIconClass = spec.expandIconClass  || 'fa-plus';
-    const collapseIconClass = spec.collapseIconClass  || 'fa-minus';
-    const iconClass = spec.iconClass || 'elr-accordion-icon';
-    const $container = $(`.${containerClass}`);
+const elrAccordion = function({
+    containerClass = 'elr-accordion',
+    labelClass = 'elr-accordion-label',
+    contentHolderClass = 'elr-accordion-content',
+    showButtons = true
+} = {}) {
+    const self = {
+        $container: $(`.${containerClass}`),
+        toggle($content, $label) {
+            // toggle active classes on accordion label and content
+            // collapse any open content so only one panel is open at a time
+            const $that = $(this);
+            const $openContent = $content.filter('.active');
+            const $openLabel = $label.filter('.active');
+            const $nextContent = $that.next();
 
-    const showDefaultContent = function($expandedContent, $content) {
-        $content.hide();
-        $expandedContent.show();
-    };
+            if (!$nextContent.hasClass('active')) {
+                $that.addClass('active');
+                $nextContent.addClass('active');
+            }
 
-    const toggle = function(speed, $openContent) {
-        const $that = $(this);
-        const $nextContent = $that.next();
-
-        $openContent.slideUp(speed);
-
-        if ( $($nextContent).is(':hidden') ) {
-            $nextContent.slideDown(speed);
-        } else {
-            $nextContent.slideUp(speed);
+            $openLabel.removeClass('active');
+            $openContent.removeClass('active');
+        },
+        showAll($content, $label) {
+            $content.addClass('active');
+            $label.addClass('active');
+        },
+        hideAll($content, $label) {
+            $content.removeClass('active');
+            $label.removeClass('active');
         }
-    };
-
-    const replaceIcons = function($openContent, iconClass, expandIconClass, collapseIconClass) {
-        const $that = $(this);
-        const $icon = $that.find(`.${iconClass}`);
-        const $openContentIcons = $openContent.prev().find(`.${iconClass}`);
-
-        if ( $icon.hasClass(expandIconClass) ) {
-            $icon.removeClass(expandIconClass).addClass(collapseIconClass);
-        } else {
-            $icon.removeClass(collapseIconClass).addClass(expandIconClass);
-        }
-
-        $openContentIcons.removeClass(collapseIconClass).addClass(expandIconClass);
     };
 
     const createButton = function(button, message, className, $container) {
-        return $('<button></button>', {text: message, 'class': className}).prependTo($container);
+        return elr.createElement('button', {
+            text: message,
+            'class': className
+        }).prependTo($container);
     };
 
     const addButtons = function($container) {
@@ -56,42 +51,28 @@ const elrAccordion = function(params) {
         };
     };
 
-    const showAll = function(speed, $content) {
-        $content.slideDown(speed);
-    };
+    if ( self.$container.length ) {
+        const $label = self.$container.find(`.${labelClass}`);
+        const $content = self.$container.find(`.${contentHolderClass}`);
 
-    const hideAll = function(speed, $content) {
-        $content.slideUp(speed);
-    };
-
-    if ( $container.length ) {
-        const $label = $container.find(`.${labelClass}`);
-        const $content = $container.find(`.${contentHolderClass}`);
-        const $icons = $label.find(`.${iconClass}`);
-        const $expandedContent = $container.find(`.${contentHolderClass}[data-state=expanded]`);
-
-        if ( showButtons ) {
-            const $buttons = addButtons($container);
+        if (showButtons) {
+            const $buttons = addButtons(self.$container);
 
             $buttons.showButton.on('click', function() {
-                showAll(speed, $content);
-                $icons.removeClass(expandIconClass).addClass(collapseIconClass);
+                self.showAll($content, $label);
             });
 
             $buttons.hideButton.on('click', function() {
-                hideAll(speed, $content);
-                $icons.removeClass(collapseIconClass).addClass(expandIconClass);
+                self.hideAll($content, $label);
             });
         }
 
-        showDefaultContent($expandedContent, $content);
+        // showDefaultContent($expandedContent, $content);
 
         $label.on('click', function(e) {
-            const $openContent = $($content).not(':hidden');
+            e.preventDefault();
 
-            replaceIcons.call(this, $openContent, iconClass, expandIconClass, collapseIconClass);
-            toggle.call(this, speed, $openContent);
-            e.stopPropagation();
+            self.toggle.call(this, $content, $label);
         });
     }
 

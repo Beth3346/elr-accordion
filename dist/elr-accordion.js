@@ -3,55 +3,61 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+
+var _elrUtilities = require('./elr-utilities');
+
+var _elrUtilities2 = _interopRequireDefault(_elrUtilities);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 var $ = require('jquery');
+var elr = (0, _elrUtilities2.default)();
 
-var elrAccordion = function elrAccordion(params) {
-    var self = {};
-    var spec = params || {};
-    var containerClass = spec.containerClass || 'elr-accordion';
-    var labelClass = spec.labelClass || 'elr-accordion-label';
-    var contentHolderClass = spec.contentHolderClass || 'elr-accordion-inner';
-    var showButtons = typeof spec.showButtons === 'undefined' ? true : spec.showButtons;
-    var speed = spec.speed || 300;
-    var expandIconClass = spec.expandIconClass || 'fa-plus';
-    var collapseIconClass = spec.collapseIconClass || 'fa-minus';
-    var iconClass = spec.iconClass || 'elr-accordion-icon';
-    var $container = $('.' + containerClass);
+var elrAccordion = function elrAccordion() {
+    var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
 
-    var showDefaultContent = function showDefaultContent($expandedContent, $content) {
-        $content.hide();
-        $expandedContent.show();
-    };
+    var _ref$containerClass = _ref.containerClass;
+    var containerClass = _ref$containerClass === undefined ? 'elr-accordion' : _ref$containerClass;
+    var _ref$labelClass = _ref.labelClass;
+    var labelClass = _ref$labelClass === undefined ? 'elr-accordion-label' : _ref$labelClass;
+    var _ref$contentHolderCla = _ref.contentHolderClass;
+    var contentHolderClass = _ref$contentHolderCla === undefined ? 'elr-accordion-content' : _ref$contentHolderCla;
+    var _ref$showButtons = _ref.showButtons;
+    var showButtons = _ref$showButtons === undefined ? true : _ref$showButtons;
 
-    var toggle = function toggle(speed, $openContent) {
-        var $that = $(this);
-        var $nextContent = $that.next();
+    var self = {
+        $container: $('.' + containerClass),
+        toggle: function toggle($content, $label) {
+            // toggle active classes on accordion label and content
+            // collapse any open content so only one panel is open at a time
+            var $that = $(this);
+            var $openContent = $content.filter('.active');
+            var $openLabel = $label.filter('.active');
+            var $nextContent = $that.next();
 
-        $openContent.slideUp(speed);
+            if (!$nextContent.hasClass('active')) {
+                $that.addClass('active');
+                $nextContent.addClass('active');
+            }
 
-        if ($($nextContent).is(':hidden')) {
-            $nextContent.slideDown(speed);
-        } else {
-            $nextContent.slideUp(speed);
+            $openLabel.removeClass('active');
+            $openContent.removeClass('active');
+        },
+        showAll: function showAll($content, $label) {
+            $content.addClass('active');
+            $label.addClass('active');
+        },
+        hideAll: function hideAll($content, $label) {
+            $content.removeClass('active');
+            $label.removeClass('active');
         }
-    };
-
-    var replaceIcons = function replaceIcons($openContent, iconClass, expandIconClass, collapseIconClass) {
-        var $that = $(this);
-        var $icon = $that.find('.' + iconClass);
-        var $openContentIcons = $openContent.prev().find('.' + iconClass);
-
-        if ($icon.hasClass(expandIconClass)) {
-            $icon.removeClass(expandIconClass).addClass(collapseIconClass);
-        } else {
-            $icon.removeClass(collapseIconClass).addClass(expandIconClass);
-        }
-
-        $openContentIcons.removeClass(collapseIconClass).addClass(expandIconClass);
     };
 
     var createButton = function createButton(button, message, className, $container) {
-        return $('<button></button>', { text: message, 'class': className }).prependTo($container);
+        return elr.createElement('button', {
+            text: message,
+            'class': className
+        }).prependTo($container);
     };
 
     var addButtons = function addButtons($container) {
@@ -61,43 +67,29 @@ var elrAccordion = function elrAccordion(params) {
         };
     };
 
-    var showAll = function showAll(speed, $content) {
-        $content.slideDown(speed);
-    };
-
-    var hideAll = function hideAll(speed, $content) {
-        $content.slideUp(speed);
-    };
-
-    if ($container.length) {
+    if (self.$container.length) {
         (function () {
-            var $label = $container.find('.' + labelClass);
-            var $content = $container.find('.' + contentHolderClass);
-            var $icons = $label.find('.' + iconClass);
-            var $expandedContent = $container.find('.' + contentHolderClass + '[data-state=expanded]');
+            var $label = self.$container.find('.' + labelClass);
+            var $content = self.$container.find('.' + contentHolderClass);
 
             if (showButtons) {
-                var $buttons = addButtons($container);
+                var $buttons = addButtons(self.$container);
 
                 $buttons.showButton.on('click', function () {
-                    showAll(speed, $content);
-                    $icons.removeClass(expandIconClass).addClass(collapseIconClass);
+                    self.showAll($content, $label);
                 });
 
                 $buttons.hideButton.on('click', function () {
-                    hideAll(speed, $content);
-                    $icons.removeClass(collapseIconClass).addClass(expandIconClass);
+                    self.hideAll($content, $label);
                 });
             }
 
-            showDefaultContent($expandedContent, $content);
+            // showDefaultContent($expandedContent, $content);
 
             $label.on('click', function (e) {
-                var $openContent = $($content).not(':hidden');
+                e.preventDefault();
 
-                replaceIcons.call(this, $openContent, iconClass, expandIconClass, collapseIconClass);
-                toggle.call(this, speed, $openContent);
-                e.stopPropagation();
+                self.toggle.call(this, $content, $label);
             });
         })();
     }
