@@ -1,6 +1,6 @@
 {
   "name": "elr-accordion",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "a basic content accordion",
   "main": "dist/elr-accordion.js",
   "repository": {
