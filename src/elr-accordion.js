@@ -1,7 +1,9 @@
 // import elrUtils from './elr-utilities';
 
 const $ = require('jquery');
-let elr = require('elr-utility-lib');
+
+import elrUtilities from 'elr-utility-lib';
+let elr = elrUtilities();
 
 const elrAccordion = function({
     containerClass = 'elr-accordion',
@@ -66,8 +68,6 @@ const elrAccordion = function({
                 self.hideAll($content, $label);
             });
         }
-
-        // showDefaultContent($expandedContent, $content);
 
         $label.on('click', function(e) {
             e.preventDefault();
