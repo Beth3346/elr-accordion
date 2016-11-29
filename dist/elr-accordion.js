@@ -3,15 +3,10 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-
-var _elrUtilities = require('./elr-utilities');
-
-var _elrUtilities2 = _interopRequireDefault(_elrUtilities);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+// import elrUtils from './elr-utilities';
 
 var $ = require('jquery');
-var elr = (0, _elrUtilities2.default)();
+var elr = require('elr-utility-lib');
 
 var elrAccordion = function elrAccordion() {
     var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};

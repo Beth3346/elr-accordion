@@ -1,7 +1,7 @@
-import elrUtils from './elr-utilities';
+// import elrUtils from './elr-utilities';
 
 const $ = require('jquery');
-let elr = elrUtils();
+let elr = require('elr-utility-lib');
 
 const elrAccordion = function({
     containerClass = 'elr-accordion',
