@@ -46,6 +46,10 @@
     "url": "https://github.com/elr-utilities/elr-accordion.git"
   },
   "scripts": {
-    "build": "build"
+    "build": "build",
+    "test": "nyc mocha test/test.js --compilers js:babel-core/register",
+    "test watch": "nyc mocha test/test.js watch --compilers js:babel-core/register",
+    "cover": "nyc --reporter=lcov npm test",
+    "report-coverage": "cat ./coverage/lcov.info | codecov"
   }
 }
