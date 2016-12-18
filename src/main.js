@@ -1,7 +1,7 @@
 const $ = require('jquery');
 
-import elrUtilities from 'elr-utility-lib';
-let elr = elrUtilities();
+import elrUI from 'elr-ui';
+let ui = elrUI();
 
 const elrAccordion = function({
     containerClass = 'elr-accordion',
@@ -38,7 +38,7 @@ const elrAccordion = function({
     };
 
     const createButton = function(button, message, className, $container) {
-        return elr.createElement('button', {
+        return ui.createElement('button', {
             text: message,
             'class': className
         }).prependTo($container);
