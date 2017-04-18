@@ -1,7 +1,7 @@
-const $ = require('jquery');
+import $ from 'jquery'
 
-import elrUI from 'elr-ui';
-let ui = elrUI();
+import elrUI from 'elr-ui'
+let ui = elrUI()
 
 const elrAccordion = function({
     containerClass = 'elr-accordion',
@@ -11,70 +11,68 @@ const elrAccordion = function({
 } = {}) {
     const self = {
         $container: $(`.${containerClass}`),
-        toggle($content, $label) {
+        toggle($label, $content) {
             // toggle active classes on accordion label and content
             // collapse any open content so only one panel is open at a time
-            const $that = $(this);
-            const $openContent = $content.filter('.active');
-            const $openLabel = $label.filter('.active');
-            const $nextContent = $that.next();
+            const $that = $(this)
+            const $openContent = $content.filter('.active')
+            const $openLabel = $label.filter('.active')
+            const $nextContent = $that.next()
 
             if (!$nextContent.hasClass('active')) {
-                $that.addClass('active');
-                $nextContent.addClass('active');
+                $that.addClass('active')
+                $nextContent.addClass('active')
             }
 
-            $openLabel.removeClass('active');
-            $openContent.removeClass('active');
+            $openLabel.removeClass('active')
+            $openContent.removeClass('active')
         },
-        showAll($content, $label) {
-            $content.addClass('active');
-            $label.addClass('active');
+        showAll($label, $content) {
+            $label.addClass('active')
+            $content.addClass('active')
         },
-        hideAll($content, $label) {
-            $content.removeClass('active');
-            $label.removeClass('active');
+        hideAll($label, $content) {
+            $label.removeClass('active')
+            $content.removeClass('active')
+        },
+        createButton(button, message, className, $container) {
+            return ui.createElement('button', {
+                text: message,
+                'class': className
+            }).prependTo($container)
+        },
+        addButtons($container) {
+            return {
+                'showButton': self.createButton('showButton', 'Show All', 'elr-show-all elr-button elr-button-primary', $container),
+                'hideButton': self.createButton('hideButton', 'Hide All', 'elr-hide-all elr-button elr-button-primary', $container)
+            }
         }
-    };
+    }
 
-    const createButton = function(button, message, className, $container) {
-        return ui.createElement('button', {
-            text: message,
-            'class': className
-        }).prependTo($container);
-    };
-
-    const addButtons = function($container) {
-        return {
-            'showButton': createButton('showButton', 'Show All', 'elr-show-all elr-button elr-button-primary', $container),
-            'hideButton': createButton('hideButton', 'Hide All', 'elr-hide-all elr-button elr-button-primary', $container),
-        };
-    };
-
-    if ( self.$container.length ) {
-        const $label = self.$container.find(`.${labelClass}`);
-        const $content = self.$container.find(`.${contentHolderClass}`);
+    if (self.$container.length) {
+        const $label = self.$container.find(`.${labelClass}`)
+        const $content = self.$container.find(`.${contentHolderClass}`)
 
         if (showButtons) {
-            const $buttons = addButtons(self.$container);
+            const $buttons = self.addButtons(self.$container)
 
             $buttons.showButton.on('click', function() {
-                self.showAll($content, $label);
-            });
+                self.showAll($label, $content)
+            })
 
             $buttons.hideButton.on('click', function() {
-                self.hideAll($content, $label);
-            });
+                self.hideAll($label, $content)
+            })
         }
 
         $label.on('click', function(e) {
-            e.preventDefault();
+            e.preventDefault()
 
-            self.toggle.call(this, $content, $label);
-        });
+            self.toggle.call(this, $label, $content)
+        })
     }
 
-    return self;
-};
+    return self
+}
 
-export default elrAccordion;
+export default elrAccordion
