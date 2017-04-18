@@ -9,7 +9,7 @@ const expect = require('chai').expect
 const chai = require('chai')
 const jsdom = require('mocha-jsdom')
 
-describe('elrAccordion', function() {
+describe('elrAccordion', function () {
     beforeEach(function () {
         document.body.innerHTML = `
             <div class="elr-accordion">
@@ -24,7 +24,7 @@ describe('elrAccordion', function() {
             </div>`
     });
 
-    it('should create a button', function() {
+    it('should create a button', function () {
         const $container = $('.elr-accordion')
         const $button = accordion.createButton('showButton', 'Show All', 'elr-show-all elr-button elr-button-primary', $container)
 
@@ -32,7 +32,7 @@ describe('elrAccordion', function() {
         expect($button.text()).to.equal('Show All')
     });
 
-    it('should add buttons', function() {
+    it('should add buttons', function () {
         const $container = $('.elr-accordion')
 
         accordion.addButtons($container)
@@ -40,7 +40,7 @@ describe('elrAccordion', function() {
         expect($('.elr-button').length).to.equal(2)
     });
 
-    it('should show all content', function() {
+    it('should show all content', function () {
         const $container = $('.elr-accordion')
         accordion.showAll($('.elr-accordion-label'), $('.elr-accordion-content'))
 
@@ -48,7 +48,7 @@ describe('elrAccordion', function() {
         expect($('.elr-accordion-label.active').length).to.equal(2)
     })
 
-    it('should hide all content', function() {
+    it('should hide all content', function () {
         const $container = $('.elr-accordion')
         accordion.hideAll($('.elr-accordion-label'), $('.elr-accordion-content'))
 
@@ -56,7 +56,7 @@ describe('elrAccordion', function() {
         expect($('.elr-accordion-label.active').length).to.equal(0)
     })
 
-    it('should toggle content', function() {
+    it('should toggle content', function () {
         const $container = $('.elr-accordion')
 
         accordion.toggle.call($('.elr-accordion-label').eq(1), $('.elr-accordion-label'), $('.elr-accordion-content'))
@@ -74,21 +74,21 @@ describe('elrAccordion', function() {
         expect($('.elr-accordion-label').eq(1).hasClass('active')).to.be.false
     })
 
-    it('should add buttons', function() {
+    it('should add buttons', function () {
         const accordion = elrAccordion()
 
         expect($('.elr-show-all').length).to.equal(1)
         expect($('.elr-hide-all').length).to.equal(1)
     })
 
-    it('should not add buttons if showButtons is false', function() {
+    it('should not add buttons if showButtons is false', function () {
         const accordion = elrAccordion({showButtons: false})
 
         expect($('.elr-show-all').length).to.equal(0)
         expect($('.elr-hide-all').length).to.equal(0)
     })
 
-    it('should show all content when show all button is clicked', function() {
+    it('should show all content when show all button is clicked', function () {
         const accordion = elrAccordion()
 
         $('button.elr-show-all').trigger('click')
@@ -97,7 +97,7 @@ describe('elrAccordion', function() {
         expect($('.elr-accordion-content.active').length).to.equal(2)
     })
 
-    it('should toggle active class when label is clicked', function() {
+    it('should toggle active class when label is clicked', function () {
         const accordion = elrAccordion()
 
         $('.elr-accordion-label').eq(1).trigger('click')
@@ -111,7 +111,7 @@ describe('elrAccordion', function() {
         expect($('.elr-accordion-content').eq(1).hasClass('active')).to.be.false
     })
 
-    it('should remove active class from active content if another label is clicked', function() {
+    it('should remove active class from active content if another label is clicked', function () {
         const accordion = elrAccordion()
 
         expect($('.elr-accordion-label').first().hasClass('active')).to.be.true
