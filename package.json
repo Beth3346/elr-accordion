@@ -1,7 +1,7 @@
 {
   "name": "elr-accordion",
   "description": "a basic content accordion jquery component",
-  "version": "2.1.6",
+  "version": "2.1.10",
   "author": "Elizabeth Rogers",
   "bugs": {
     "url": "https://github.com/Beth3346/elr-accordion",
@@ -56,7 +56,6 @@
   },
   "scripts": {
     "precommit": "gulp",
-    "prepush": "np",
     "build": "build",
     "test": "nyc mocha test/test.js --compilers js:babel-core/register",
     "test watch": "nyc mocha test/test.js watch --compilers js:babel-core/register",
