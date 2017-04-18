@@ -55,7 +55,8 @@
     ]
   },
   "scripts": {
-    "pre-commit": "gulp",
+    "precommit": "gulp",
+    "prepush": "npm test",
     "build": "build",
     "test": "nyc mocha test/test.js --compilers js:babel-core/register",
     "test watch": "nyc mocha test/test.js watch --compilers js:babel-core/register",
