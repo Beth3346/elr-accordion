@@ -44,11 +44,6 @@
     "type": "git",
     "url": "https://github.com/elr-utilities/elr-accordion.git"
   },
-  "config": {
-    "ghooks": {
-      "pre-commit": "gulp"
-    }
-  },
   "nyc": {
     "check-coverage": true,
     "branches": 0,
@@ -60,6 +55,7 @@
     ]
   },
   "scripts": {
+    "pre-commit": "gulp",
     "build": "build",
     "test": "nyc mocha test/test.js --compilers js:babel-core/register",
     "test watch": "nyc mocha test/test.js watch --compilers js:babel-core/register",
