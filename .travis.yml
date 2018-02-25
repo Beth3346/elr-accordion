@@ -4,5 +4,4 @@ node_js:
 before_script:
   - npm install
   - npx webpack
-  - npm test
 after_success:
