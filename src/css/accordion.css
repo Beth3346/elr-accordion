@@ -1,0 +1,51 @@
+.elr-accordion-label {
+  font-size: 18px;
+  font-weight: 700;
+  border: 1px solid #ccc;
+  padding: 10px 20px;
+  margin: 5px 0;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.elr-accordion-content {
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  visibility: hidden;
+  overflow: hidden;
+  margin: 0;
+  max-height: 0;
+  transition: max-height .5s cubic-bezier(0, 1.05, 0, 1), visibility .2s;
+}
+
+.elr-accordion-content p {
+  padding: 5px 20px;
+}
+
+.elr-accordion-content p:first-child {
+  padding-top: 15px;
+}
+
+.elr-accordion-content p:last-child {
+  padding-bottom: 15px;
+}
+
+.elr-accordion-content.active {
+  visibility: visible;
+  max-height: 2000px;
+  transition: max-height .5s ease-in;
+}
+
+.elr-button {
+  background-color: #333;
+  color: #fff;
+  width: 200px;
+  padding: 10px;
+  text-align: center;
+  margin: 10px 10px 10px 0;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+}
