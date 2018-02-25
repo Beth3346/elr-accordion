@@ -1,13 +1,13 @@
-# elr-accordion
+# elr-accordion [![Build Status](https://travis-ci.org/elr-utilities/elr-accordion.png?branch=master)](https://travis-ci.org/elr-utilities/elr-accordion)
 
 a basic content accordion jquery component
 
 ## Installation
 
-This is a [Node.js](https://nodejs.org/) module available through the 
-[npm registry](https://www.npmjs.com/). It can be installed using the 
+This is a [Node.js](https://nodejs.org/) module available through the
+[npm registry](https://www.npmjs.com/). It can be installed using the
 [`npm`](https://docs.npmjs.com/getting-started/installing-npm-packages-locally)
-or 
+or
 [`yarn`](https://yarnpkg.com/en/)
 command line tools.
 
