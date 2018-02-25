@@ -1,4 +1,4 @@
-# elr-accordion [![Build Status](https://travis-ci.org/elr-utilities/elr-accordion.png?branch=master)](https://travis-ci.org/elr-utilities/elr-accordion)
+# elr-accordion [![Build Status](https://travis-ci.org/Beth3346/elr-accordion.png?branch=master)](https://travis-ci.org/Beth3346/elr-accordion)
 
 a basic content accordion jquery component
 
