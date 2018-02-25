@@ -3,7 +3,7 @@ import accordion from '../elr-accordion'
 import fs from 'fs'
 import path from 'path'
 
-const accordionHtml = path.join(__dirname, '..', '..', '..', 'dist', 'index.html')
+const accordionHtml = path.join(__dirname, '..', 'accordion.html')
 const html = fs.readFileSync(accordionHtml).toString()
 
 beforeEach(() => {
