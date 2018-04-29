@@ -1845,6 +1845,28 @@ elliptic@^6.0.0:
     minimalistic-assert "^1.0.0"
     minimalistic-crypto-utils "^1.0.0"
 
+elr-scss-accordion@^1.0.2:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/elr-scss-accordion/-/elr-scss-accordion-1.1.1.tgz#e3ea0471867ca0f54090afd89e9efb2fbe03b558"
+  dependencies:
+    babel-runtime "^6.26.0"
+    elr-scss-animations "0.0.1"
+    elr-scss-functions "0.1.2"
+
+elr-scss-animations@0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/elr-scss-animations/-/elr-scss-animations-0.0.1.tgz#e7ad3ced2f3cef4ba757cedbb6e849a2f4b3dd1d"
+  dependencies:
+    elr-scss-functions "0.0.2"
+
+elr-scss-functions@0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/elr-scss-functions/-/elr-scss-functions-0.0.2.tgz#fd4852d87f2efc2499684e01cb712d6c52081654"
+
+elr-scss-functions@0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/elr-scss-functions/-/elr-scss-functions-0.1.2.tgz#4dd9e4a5784fdf6d28367306cf504021491682cb"
+
 emojis-list@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/emojis-list/-/emojis-list-2.1.0.tgz#4daa4d9db00f9819880c79fa457ae5b09a1fd389"

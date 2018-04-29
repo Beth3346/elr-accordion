@@ -16,7 +16,7 @@
   overflow: hidden;
   margin: 0;
   max-height: 0;
-  transition: max-height .5s cubic-bezier(0, 1.05, 0, 1), visibility .2s;
+  transition: max-height 0.5s cubic-bezier(0, 1.05, 0, 1), visibility 0.2s;
 }
 
 .elr-accordion-content p {
@@ -34,18 +34,5 @@
 .elr-accordion-content.active {
   visibility: visible;
   max-height: 2000px;
-  transition: max-height .5s ease-in;
-}
-
-.elr-button {
-  background-color: #333;
-  color: #fff;
-  width: 200px;
-  padding: 10px;
-  text-align: center;
-  margin: 10px 10px 10px 0;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 700;
+  transition: max-height 0.5s ease-in;
 }
