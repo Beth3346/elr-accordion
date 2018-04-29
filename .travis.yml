@@ -8,5 +8,5 @@ install:
   - yarn install
 script:
   - yarn test
-  - npx webpack
+  - yarn start
 after_success:
