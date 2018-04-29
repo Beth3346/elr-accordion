@@ -5,62 +5,34 @@
   "author": "Elizabeth Rogers",
   "bugs": {
     "url": "https://github.com/Beth3346/elr-accordion",
-    "email": "beth@elizabeth-rogers.com"
+    "email": "Beth3346@gmail.com"
   },
-  "dependencies": {
-    "babel-runtime": "^6.0.0",
-    "elr-ui": "^0.1.0",
-    "jquery": "^3.1.1"
-  },
-  "devDependencies": {
-    "babel-core": "^6.0.0",
-    "babel-eslint": "^7.1.1",
-    "babel-preset-es2015": "^6.14.0",
-    "chai": "^3.5.0",
-    "codecov": "^1.0.1",
-    "del": "^2.2.2",
-    "gulp": "^3.9.1",
-    "gulp-babel": "^6.1.2",
-    "gulp-eslint": "^3.0.1",
-    "gulp-mocha": "^3.0.1",
-    "gulp-notify": "^2.2.0",
-    "gulp-plumber": "^1.1.0",
-    "gulp-sourcemaps": "^2.1.1",
-    "husky": "^0.13.3",
-    "jsdom": "9.11.0",
-    "jsdom-global": "2.1.1",
-    "mocha": "^3.2.0",
-    "mocha-jsdom": "^1.1.0",
-    "mocha-notifier-reporter": "^0.1.2",
-    "nyc": "^10.0.0"
-  },
-  "homepage": "http://www.elizabeth-rogers.com/elr-utilities/js-accordion.html",
-  "keywords": [
-    "javascript, jquery, accordion, ui"
-  ],
-  "license": "SEE LICENSE IN LICENSE.md",
-  "main": "dist/main.js",
+  "license": "MIT",
+  "entry": "src/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/elr-utilities/elr-accordion.git"
-  },
-  "nyc": {
-    "check-coverage": true,
-    "branches": 0,
-    "functions": 0,
-    "lines": 0,
-    "statements": 0,
-    "include": [
-      "src/*.js"
-    ]
+    "url": "https://github.com/Beth3346/elr-accordion.git"
   },
   "scripts": {
-    "precommit": "gulp && npm run bump",
-    "build": "build",
-    "test": "nyc mocha test/test.js --compilers js:babel-core/register",
-    "test watch": "nyc mocha test/test.js watch --compilers js:babel-core/register",
-    "cover": "nyc --reporter=lcov npm test",
-    "report-coverage": "cat ./coverage/lcov.info | codecov",
-    "bump": "sh/bump-ver.sh"
+    "start": "webpack --config webpack.config.js",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "dependencies": {
+    "babel-runtime": "^6.26.0",
+    "jquery": "^3.3.1"
+  },
+  "devDependencies": {
+    "css-loader": "^0.28.10",
+    "husky": "^1.0.0-rc.2",
+    "jest": "^22.4.2",
+    "style-loader": "^0.20.2",
+    "webpack": "^4.0.0",
+    "webpack-cli": "^2.0.9"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npx webpack && yarn test"
+    }
   }
 }
