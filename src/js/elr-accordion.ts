@@ -1,16 +1,26 @@
-import $ from 'jquery';
+import * as $ from 'jquery';
 ('use strict');
 
 let $container;
+interface Config {
+  message: string;
+  className: string;
+  $container: JQuery;
+}
 
-const createButton = config => {
+interface Buttons {
+  hideButton: JQuery;
+  showButton: JQuery;
+}
+
+const createButton = (config: Config): JQuery => {
   return $('<button></button>', {
     text: config.message,
     class: config.className
   }).prependTo(config.$container);
 };
 
-const toggle = function($label, $content) {
+const toggle = function($label: JQuery, $content: JQuery): void {
   // toggle active classes on accordion label and content
   // collapse any open content so only one panel is open at a time
   const $that = $(this);
@@ -27,17 +37,17 @@ const toggle = function($label, $content) {
   $openContent.removeClass('active');
 };
 
-const showAll = ($label, $content) => {
+const showAll = ($label: JQuery, $content: JQuery): void => {
   $label.addClass('active');
   $content.addClass('active');
 };
 
-const hideAll = ($label, $content) => {
+const hideAll = ($label: JQuery, $content: JQuery): void => {
   $label.removeClass('active');
   $content.removeClass('active');
 };
 
-const addButtons = $container => {
+const addButtons = ($container: JQuery): Buttons => {
   return {
     showButton: createButton({
       $container,
@@ -53,7 +63,7 @@ const addButtons = $container => {
 };
 
 export default {
-  init() {
+  init(): void {
     $container = $(`.elr-accordion`);
     if ($container.length) {
       const $label = $container.find(`.elr-accordion-label`);
